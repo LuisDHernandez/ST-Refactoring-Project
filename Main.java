@@ -17,72 +17,40 @@ public class Main {
      * 
      * @param args
      */
-	int calculateBadGuyWin(int num){
-		return num;
-		}
 
     public static void main(String[] args) {
-    	
-
         // sysout ctrl spacebar = system.out.println();
-        /*
-         * Java uses data types like byte, char, integer, double, short, long and float
-         * and commonly the class String bytes are 8 bit memory and hold values between
-         * -128 to 127 integers are much bigger holders for numbers shorts are for small
-         * numbers long are for very large numbers that require more space float and
-         * double create space in memory for fractional numbers and components Strings
-         * and char are character value(s) stored as letters
-         */
-        // this is a method call but with no arguments and with a separate class
-        // from
-        // Main
+       
         Introduction.printIntro();
 
         Scanner scan = new Scanner(System.in);
-        // wait for user to type their name
+        
+        Character Player = new Character();
+        Player.setRep(0);
+        
         String userName = scan.nextLine();
         userName = userName.substring(0, 1).toUpperCase() + userName.substring(1);
-        System.out.println("Luis: Hello " + userName + ", it's so nice to meet you!");
-        // variable is a space in memory allocated for what we assign to it
-        // being any
-        // value
-        // scope is code that falls inside the curly braces of classes and
-        // methods and
-        // if/else
-        // statements.they are inside the entirety of the class or in just some
-        // smaller
-        // class
+        Player.setName(userName);
+        System.out.println("Luis: Hello " + Player.getName() + ", it's so nice to meet you!");
 
-        // use of switch to print out month and year
         System.out.println("What month is it? [Give your answer between 1 and 12.]");
         int month = scan.nextInt();
-        String theMonth;
-        // switch is helpful to solve for multiple situations
-
-        MonthinGame.TimeOfTheYear(month);
-        theMonth = MonthinGame.TimeOfTheYear(month);
+        String theMonth = Month_and_Year.setMonth(month);
         System.out.println("So it's " + theMonth + " but what year is it?");
         int year = scan.nextInt();
         System.out.println(
                 "It's " + theMonth + " " + year + ", and now it's time to get this game started!");
 
-        System.out.println("Luis: All characters have different skills that are randomly "
-                + "generated :" + " Strength, Agility, Intelligence, and Stamina.");
-        // random number generator gives skills a value
-        // this skills will increment or decrement with activities that happen
-        // in the
-        // code
+        Player.explain_game_skills();
+        // set the player skills
         Random randomSkill = new Random();
-        // i love VanSelow
-        // and chocolates
-
-        int Strength = randomSkill.nextInt((10)) + 1;
-        int Agility = randomSkill.nextInt((10)) + 1;
-        int Intelligence = randomSkill.nextInt((10)) + 1;
-        int Stamina = randomSkill.nextInt((10)) + 1;
-
-        System.out.println("Your skill levels are: \n Strength: " + Strength + " \n Agility: "
-                + Agility + "\n Intelligence: " + Intelligence + "\n Stamina: " + Stamina);
+        Player.setPower(randomSkill.nextInt(10) + 1);
+        Player.setSpeed(randomSkill.nextInt(10) + 1);
+        Player.setSmarts(randomSkill.nextInt(10) + 1);
+        Player.setEndurance(randomSkill.nextInt(10) + 1);
+        
+        System.out.println("Your skill levels are: \n Strength: " + Player.getPower() + " \n Agility: "
+                + Player.getSpeed() + "\n Intelligence: " + Player.getSmarts() + "\n Stamina: " + Player.getEndurance());
 
         System.out.println("Every game starts with a first mission. For this mission,"
                 + " input a number bigger than 10 to continue!");
@@ -100,23 +68,19 @@ public class Main {
                 + " it is your duty to " + "help people around the city and gain Reputation with"
                 + " each good deed.\nI just saw " + "someone who needs help pushing their car,"
                 + " lets go help!");
-        // reputation will be a deciding factor when determining hero rank at
-        // the end of
-        // the minigame
-        int Reputation = 0;
 
         System.out.println(
                 "To succesfully help and gain Rep, answer the following:\n" + " What's 2+2 = ?");
         int pushtheCar = scan.nextInt();
         // if/else statement execute if input is true for said block of code
         if (pushtheCar == 4) {
-            Reputation++;
+            Player.setRep(Player.getRep() + 1);
             System.out.println(
                     "Nice! You helped the civilian! Your Rep grows everytime" + " you succeed!");
-            System.out.println("Rep: " + Reputation);
+            System.out.println("Rep: " + Player.getRep());
         } else {
-            Reputation--;
-            System.out.println("You have failed but there's always next time!\n Rep:" + Reputation);
+        	Player.setRep(Player.getRep() - 1);
+            System.out.println("You have failed but there's always next time!\n Rep:" + Player.getRep());
         }
 
         // math.pow is used to increase the skills of a character that'll be
@@ -126,11 +90,11 @@ public class Main {
         // operator precedence is important here because strength would not
         // increment
         // before it was squared if the ++ was behind strength
-        Strength = (int) Math.pow(++Strength, 2);
+        Player.setPower((int)Math.pow(Player.getPower() + 1, 2));
         System.out.println("If an activity is very physically challenging or mentally "
                 + "straining and you succeed," + " your skills might also increase exponentially!"
                 + "\nThis time, helping the civilian increased your" + " Strength!" + "\nStrength: "
-                + Strength);
+                + Player.getPower());
         System.out.println("A criminal is running away from the police! "
                 + "Time for some vigilante heroism! The only way to catch "
                 + "them is to sprint at full force!\nInput a number that is "
@@ -141,29 +105,29 @@ public class Main {
         if (catchBadGuy > 10) {
             if (catchBadGuy < 50) {
                 if (even == 0) {
-                    Agility = (int) Math.pow(++Agility, 2);
-                    Reputation += 3;
+                	Player.setSpeed((int)Math.pow(Player.getSpeed() + 1, 2));
+                    Player.setRep(Player.getRep() + 3);
                     System.out
                             .println("Good job! You caught the criminal and became" + " a stronger "
-                                    + "hero! \n Agility : " + Agility + "\n Rep: " + Reputation);
+                                    + "hero! \n Agility : " + Player.getSpeed() + "\n Rep: " + Player.getRep());
 
                 } else {
-                    Reputation--;
+                    Player.setRep(Player.getRep() - 1);
                     System.out.println("You almost had him, but he just slipped "
-                            + "away! He won't get away next time!\n " + "Rep: " + Reputation);
+                            + "away! He won't get away next time!\n " + "Rep: " + Player.getRep());
                 }
 
             } else {
-                Reputation -= 3;
+                Player.setRep(Player.getRep() - 3);
                 System.out.println("You ran so fast that you went passed him and"
                         + " slammed into a" + " wall! Maybe you have super agility"
-                        + " and need to learn how to control" + " it!\n Rep: " + Reputation);
+                        + " and need to learn how to control" + " it!\n Rep: " + Player.getRep());
 
             }
         } else {
             System.out.println("He got away! Maybe your Agility is too low. Do not be "
                     + "dismayed, there are plenty of " + "oppertunities waiting!\n Rep: "
-                    + Reputation);
+                    + Player.getRep());
         }
 
         System.out.println("oh no....." + "There's a meteor crashing into the Earth!"
@@ -176,27 +140,22 @@ public class Main {
         userAnswer.trim();
         // goes to separate method and sets final mission
 
-        UltimateCannon.theUltimateAnswer(userAnswer, Reputation, userName);
+        //Reputation = UltimateCannon.theUltimateAnswer(userAnswer, Reputation, userName);
 
         // System.out.println("More missions are coming your way!");
-        Character Player = new Character(userName);
-        Player.setName(userName);
 
-        // System.out.println("You are: " + Player.getName() + ".");
-        // String trueHero = HeroRanking.TheHeroRank(Reputation);
-        // by combining the above code, it's more efficient and clean
-        String trueHero = HeroRanking.TheHeroRank(Reputation);
+        String trueHero = HeroRanking.TheHeroRank(Player.getRep());
         System.out.println("You are " + Player.getName() + " and you are a " + trueHero + "!");
 
         System.out.println("This is the Post Game that goes through different coding concepts that"
                 + "weren't covered in the main program.");
         System.out.println("Here is an example of a while loop and right after, a do-while loop");
+        
         DoWhileandWhile.MathBuddies();
 
         DoWhileandWhile.PlugAndChug();
 
         System.out.println("This next part will tackle exception handling.");
-        // Exceptions code is below
 
         int inputA;
         int inputB;
@@ -207,9 +166,10 @@ public class Main {
             System.out.println("Enter first number");
             try {
                 inputA = scan.nextInt();
+                System.out.println("Enter second number");
                 inputB = scan.nextInt();
                 int mathinput = inputA / inputB;
-                System.out.println("Your first input divided by your second input as an int " + "is"
+                System.out.println("Your first input divided by your second input as an int " + "is "
                         + mathinput + ".");
                 perfectinput = true;
             } catch (InputMismatchException notAnInt) {
@@ -222,14 +182,6 @@ public class Main {
             }
         }
 
-        // Inheritance is where a class is derived from a based class and also shares
-        // the same
-        // fields from that parent class
-        // "is a" relationship is a perfect example of inheritance (a cat is an animal)
-        // the biggest benefit is being able to use extensive object oriented
-        // programming
-        // with just one block of code as the base
-
         System.out.println("This next portion will cover polymorphism and inheritance!");
 
         Penguin Larry = new Penguin();
@@ -241,13 +193,13 @@ public class Main {
                 + "the derived class Animal to the class Penguin.");
         
         ArrayList<String> groceries = new ArrayList<String>();   
-        groceries.add("Eggs"); // adds item to the grocery list
+        groceries.add("Eggs");
         groceries.add("Milk");
         groceries.add("Bread");
         groceries.add("Chocolate Chip Cookies");
-        int pos = groceries.indexOf("Eggs");  // gets the position that matches argument
-        int size = groceries.size();  // returns the size 
-        String item = groceries.get(2);  // returns element at index location 
+        int pos = groceries.indexOf("Eggs");
+        int size = groceries.size();
+        String item = groceries.get(2);
         for (int i = 0; i < groceries.size(); i++) {
             System.out.println("Index: " + i + " - Item: " + groceries.get(i));
         }
