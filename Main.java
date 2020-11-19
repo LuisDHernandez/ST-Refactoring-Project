@@ -50,29 +50,23 @@ public class Main {
             System.out.println("You've failed the first mission!\nBut don't worry you'll"
                     + " have another chance.");
         }
-        
+        //start of the game and first input mission
         Printer.print_mission_prelude();
         Printer.print_mission_one();
         int pushtheCar = scan.nextInt();
         Missions.do_mission_one(Player, pushtheCar);
+        //end first mission and begin second input mission
         Printer.print_mission_two();
         int catchBadGuy = scan.nextInt();
         Missions.do_mission_two(Player, catchBadGuy);
-        
-        System.out.println("oh no....." + "There's a meteor crashing into the Earth!"
-                + " Activate the Comet Cannon by answering this riddle!"
-                + " I am a symbol. \nA number that is always bigger, with no "
-                + "definite end. " + "What am I?");
+        //end the second mission and begin final input mission
+        Printer.print_final_mission();
         scan.nextLine();
-        // user inputs correct answer no matter what lettercase
         String userAnswer = scan.nextLine();
-        userAnswer.trim();
-        
-        UltimateCannon.theUltimateAnswer(userAnswer, Player);
-
-        String trueHero = HeroRanking.TheHeroRank(Player.getRep());
-        System.out.println("You are " + Player.getName() + " and you are a " + trueHero + "!");
-
+        userAnswer.trim(); //since regex not implemented, have to trim the answer to ensure correctness
+        UltimateCannon.do_final_mission(userAnswer, Player);
+        String hero_rank = HeroRanking.set_Hero_Rank(Player.getRep());
+        System.out.println("You are " + Player.getName() + " and you are a " + hero_rank + "!");
         System.out.println("This is the Post Game that goes through different coding concepts that"
                 + "weren't covered in the main program.");
         System.out.println("Here is an example of a while loop and right after, a do-while loop");

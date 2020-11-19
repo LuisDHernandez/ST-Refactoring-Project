@@ -10,7 +10,7 @@ public class UltimateCannon {
      *                   end
      * @return Reputation to be used in the final calculation of HeroRanking
      */
-    public static void theUltimateAnswer(String userAnswer, Character player) {
+    public static void do_final_mission(String userAnswer, Character player) {
         // infinity has 8 char; should be replaced with simple regex
         int theAnswerFromPlayer = userAnswer.length();
 

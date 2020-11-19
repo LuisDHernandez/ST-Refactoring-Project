@@ -28,4 +28,10 @@ public class Printer {
                 + "bigger than 10 but less"
                 + " than 50 and is an even number to catch the perpetrator!");
     }
+    public static void print_final_mission() {
+    	System.out.println("oh no....." + "There's a meteor crashing into the Earth!"
+                + " Activate the Comet Cannon by answering this riddle!"
+                + " I am a symbol. \nA number that is always bigger, with no "
+                + "definite end. " + "What am I?");
+    }
 }
