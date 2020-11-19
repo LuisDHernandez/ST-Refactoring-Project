@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Character {
 
     private String name;
@@ -69,5 +71,14 @@ public class Character {
 		
 		System.out.println("Luis: All characters have different skills that are randomly "
                 + "generated :" + " Power, Speed, Smarts, and Endurance.");
+		// set the player skills
+        Random randomSkill = new Random();
+        power = (randomSkill.nextInt(10) + 1);
+        speed = (randomSkill.nextInt(10) + 1);
+        smarts = (randomSkill.nextInt(10) + 1);
+        endurance = (randomSkill.nextInt(10) + 1);
+        
+        System.out.println("Your skill levels are: \n Strength: " + power + " \n Agility: "
+                + speed + "\n Intelligence: " + smarts + "\n Stamina: " + endurance);
 	}
 }

@@ -10,19 +10,17 @@ public class UltimateCannon {
      *                   end
      * @return Reputation to be used in the final calculation of HeroRanking
      */
-    public static int theUltimateAnswer(String userAnswer, int Reputation, String userName) {
-        // infinity has 8 char
+    public static void theUltimateAnswer(String userAnswer, Character player) {
+        // infinity has 8 char; should be replaced with simple regex
         int theAnswerFromPlayer = userAnswer.length();
 
         if (theAnswerFromPlayer == 8) {
-            Reputation += 4;
+            player.setRep(player.getRep() + 4);
             System.out.println("Amazing! You did it! The meteor was blown to pieces! "
-                    + "You saved " + "the Earth! Thank you, " + userName + "!");
+                    + "You saved " + "the Earth! Thank you, " + player.getName() + "!");
         } else {
             System.out.println("It's too late.... we're done for!!!");
-            Reputation -= 4;
+            player.setRep(player.getRep() - 4);
         }
-        return Reputation;
-
     }
 }
