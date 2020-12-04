@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 
 public class Missions {
 
@@ -83,7 +84,30 @@ public class Missions {
 		 }
 	}
 
-	public static void do_mission_five() {
-		
+	public static void do_mission_five(Character player, int inputA, int inputB) {
+
+        boolean check = false;
+        while (check == false) {
+            try {
+                int distance = (inputA * 5) / inputB;
+                player.setRep(player.getRep() + 1);
+                player.setEndurance(player.getEndurance() * distance);
+                System.out.println("Good job hero you made it across the long road and got stronger!" );
+                check = true;
+            } catch (InputMismatchException notAnInt) {
+            	player.setRep(player.getRep() - 1);
+                System.out.println("Since you didn't input an integer, you fell along the way and hurt your leg!");
+            } catch (ArithmeticException dividedByZero) {
+            	player.setRep(player.getRep() - 3);
+                System.out.println("Your second number was zero, creating an issue in the matrix and causing you to completely miss the road fall into the ravine!");
+            }
+        }	
+	}
+
+	public static void do_mission_six(Character player, Animal pet, String pet_name) {
+		System.out.println("You successfully tamed the animal, and named them " + pet.getName() + ".\nYour pet lets out its signature sound: ");
+		pet.speak();
+		System.out.println("You give the animal a nametag with your name, " + pet.getOwner().getName() + ", and "
+				+ "leave a phone number to reach you at in case they get lost.");
 	}
 }

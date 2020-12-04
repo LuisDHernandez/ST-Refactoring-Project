@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 // Luis Hernandez COP 2006
@@ -56,22 +55,36 @@ public class Main {
         int pushtheCar = scan.nextInt();
         Missions.do_mission_one(Player, pushtheCar);
         //end first mission and begin second input mission
+        
         Printer.print_mission_two();
         int catchBadGuy = scan.nextInt();
         Missions.do_mission_two(Player, catchBadGuy);
         //end the second mission and begin third input mission
+        
         Printer.print_mission_three();
         int train = scan.nextInt();
         Missions.do_mission_three(Player, train);
         //end the third mission and begin next mission
+        
         Printer.print_mission_four();
         int a = scan.nextInt();
         System.out.println("Enter another integer to checkmate your opponent.");
         int b = scan.nextInt();
         Missions.do_mission_four(Player, a, b);
         //end the fourth mission
+        
         Printer.print_mission_five();
-        Missions.do_mission_five();
+        int inputA = scan.nextInt();
+        System.out.println("Enter another integer.");
+        int inputB = scan.nextInt();
+        Missions.do_mission_five(Player, inputA, inputB);
+        // end the fifth mission
+        
+        Printer.print_mission_six();
+        String pet_name = scan.nextLine();
+        Animal player_pet = new Animal(Player, pet_name);
+        Missions.do_mission_six(Player, player_pet, pet_name);
+        // end sixth mission
         
         Printer.print_final_mission();
         scan.nextLine();
@@ -83,45 +96,6 @@ public class Main {
         
         
         
-        
-        
-
-        System.out.println("This next part will tackle exception handling.");
-
-        int inputA;
-        int inputB;
-
-        boolean perfectinput = false;
-
-        while (perfectinput == false) {
-            System.out.println("Enter first number");
-            try {
-                inputA = scan.nextInt();
-                System.out.println("Enter second number");
-                inputB = scan.nextInt();
-                int mathinput = inputA / inputB;
-                System.out.println("Your first input divided by your second input as an int " + "is "
-                        + mathinput + ".");
-                perfectinput = true;
-            } catch (InputMismatchException notAnInt) {
-                System.out.println("Requires an integer, please try again.");
-                scan.nextLine();
-            } catch (ArithmeticException dividedByZero) {
-                System.out.println(
-                        "You cannot divide by zero, please input a different second " + "integer.");
-                scan.nextLine();
-            }
-        }
-
-        System.out.println("This next portion will cover polymorphism and inheritance!");
-
-        Penguin Larry = new Penguin();
-        Larry.AnimalSpecies();
-        Larry.SpeciesNoise();
-        Larry.PenguinSwims();
-
-        System.out.println("The above text is all inheritance and polymorphism from "
-                + "the derived class Animal to the class Penguin.");
         
         ArrayList<String> groceries = new ArrayList<String>();   
         groceries.add("Eggs");
