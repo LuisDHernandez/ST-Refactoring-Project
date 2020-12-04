@@ -18,7 +18,6 @@ public class Main {
      */
 
     public static void main(String[] args) {
-        // sysout ctrl spacebar = system.out.println();
        
         Printer.printIntro();
 
@@ -50,6 +49,7 @@ public class Main {
             System.out.println("You've failed the first mission!\nBut don't worry you'll"
                     + " have another chance.");
         }
+        
         //start of the game and first input mission
         Printer.print_mission_prelude();
         Printer.print_mission_one();
@@ -59,7 +59,20 @@ public class Main {
         Printer.print_mission_two();
         int catchBadGuy = scan.nextInt();
         Missions.do_mission_two(Player, catchBadGuy);
-        //end the second mission and begin final input mission
+        //end the second mission and begin third input mission
+        Printer.print_mission_three();
+        int train = scan.nextInt();
+        Missions.do_mission_three(Player, train);
+        //end the third mission and begin next mission
+        Printer.print_mission_four();
+        int a = scan.nextInt();
+        System.out.println("Enter another integer to checkmate your opponent.");
+        int b = scan.nextInt();
+        Missions.do_mission_four(Player, a, b);
+        //end the fourth mission
+        Printer.print_mission_five();
+        Missions.do_mission_five();
+        
         Printer.print_final_mission();
         scan.nextLine();
         String userAnswer = scan.nextLine();
@@ -67,13 +80,11 @@ public class Main {
         UltimateCannon.do_final_mission(userAnswer, Player);
         String hero_rank = HeroRanking.set_Hero_Rank(Player.getRep());
         System.out.println("You are " + Player.getName() + " and you are a " + hero_rank + "!");
-        System.out.println("This is the Post Game that goes through different coding concepts that"
-                + "weren't covered in the main program.");
-        System.out.println("Here is an example of a while loop and right after, a do-while loop");
         
-        DoWhileandWhile.MathBuddies();
-
-        DoWhileandWhile.PlugAndChug();
+        
+        
+        
+        
 
         System.out.println("This next part will tackle exception handling.");
 

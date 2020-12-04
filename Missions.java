@@ -49,4 +49,41 @@ public class Missions {
         }
 		
 	}
+	public static void do_mission_three(Character player, int train) {
+		int count_months = train;
+		while(count_months >= 0) {
+			player.setPower(player.getPower() + 1);
+			player.setSpeed(player.getSpeed() + 1);
+			player.setSmarts(player.getSmarts() + 1);
+			player.setEndurance(player.getEndurance() + 1);
+			count_months--;
+		}
+		System.out.println("Congrats! After training for " + train + " months, you abilities have increased:\nPower: " + player.getPower() + 
+				"\nSpeed: " + player.getSpeed() + "\nSmarts: " + player.getSmarts() + "\nEndurance: " + player.getEndurance());
+	}
+	public static void do_mission_four(Character player, int plug, int chug) {
+		 int first_n = plug;
+		 if(first_n < 10) {
+			 int second_n = chug;
+		     int keepgoing = 0;
+		     int win = 0;
+		     do {
+		    	 win = (first_n * 2 + (second_n + first_n)) + 1;
+		         keepgoing++;
+		        } while (keepgoing < 2);
+		     player.setSmarts(player.getSmarts() + win);
+		     player.setRep(player.getRep() + 1);
+		     System.out.println("Congrats you won your chess match! Your Smarts increased to: " + player.getSmarts());
+		 }
+		 else {
+			System.out.println("You didn't make the right play and lost your chess match!");
+			player.setSmarts(player.getSmarts() - 4);
+			player.setRep(player.getRep() - 1);
+			System.out.println("Your Smarts is now at: " + player.getSmarts());
+		 }
+	}
+
+	public static void do_mission_five() {
+		
+	}
 }

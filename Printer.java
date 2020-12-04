@@ -28,10 +28,22 @@ public class Printer {
                 + "bigger than 10 but less"
                 + " than 50 and is an even number to catch the perpetrator!");
     }
+    public static void print_mission_three() {
+    	System.out.println("As a hero, you have to train hard and push yourself to get stronger. "
+    			+ "Please enter a how many months you want to train for.");
+    }
+    public static void print_mission_four() {
+    	System.out.println("After all that training, it is time to show off your abilities.");
+    	System.out.println("On your way to your next mission you're challenged to Chess match. "
+    			+ "Enter an integer smaller than 10 to check your opponent!");
+    }
     public static void print_final_mission() {
     	System.out.println("oh no....." + "There's a meteor crashing into the Earth!"
                 + " Activate the Comet Cannon by answering this riddle!"
                 + " I am a symbol. \nA number that is always bigger, with no "
                 + "definite end. " + "What am I?");
     }
+	public static void print_mission_five() {
+		System.out.println("");
+	}
 }
