@@ -48,10 +48,9 @@ public class Month_and_Year {
                 theMonth = "December";
                 break;
             default:
-                theMonth = "invalid month my guy.";
+                theMonth = "invalid month.";
                 break;
         }
         return theMonth;
     }
-
 }

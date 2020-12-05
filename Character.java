@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Character {
@@ -8,6 +9,7 @@ public class Character {
     private int smarts;
     private int speed;
     private int endurance;
+    ArrayList<String> inventory = new ArrayList<String>();
 
     public Character() {
         // System.out.println("This is the default constructor!");
@@ -65,6 +67,14 @@ public class Character {
 
 	public void setEndurance(int endurance) {
 		this.endurance = endurance;
+	}
+	
+	public ArrayList<String> getInventory(){
+		return inventory;
+	}
+	
+	public void setInventory(String item) {
+		inventory.add(item);
 	}
 	
 	public void explain_game_skills() {

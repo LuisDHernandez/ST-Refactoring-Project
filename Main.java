@@ -1,12 +1,8 @@
-import java.util.ArrayList;
 import java.util.Scanner;
-
 // Luis Hernandez COP 2006
 // A first year program to show a mini-game that inspires me to code and learn 
 // more.
-
 public class Main {
-
     /**
      * the driver class that runs my minigame.
      * <p>
@@ -15,13 +11,10 @@ public class Main {
      * 
      * @param args
      */
-
     public static void main(String[] args) {
        
         Printer.printIntro();
-
         Scanner scan = new Scanner(System.in);
-        
         Character Player = new Character();
         Player.setRep(0);
         
@@ -48,7 +41,6 @@ public class Main {
             System.out.println("You've failed the first mission!\nBut don't worry you'll"
                     + " have another chance.");
         }
-        
         //start of the game and first input mission
         Printer.print_mission_prelude();
         Printer.print_mission_one();
@@ -79,12 +71,19 @@ public class Main {
         int inputB = scan.nextInt();
         Missions.do_mission_five(Player, inputA, inputB);
         // end the fifth mission
+        scan.nextLine();
         
         Printer.print_mission_six();
         String pet_name = scan.nextLine();
         Animal player_pet = new Animal(Player, pet_name);
         Missions.do_mission_six(Player, player_pet, pet_name);
         // end sixth mission
+        
+        Printer.print_mission_seven();
+        System.out.println("To make sure you have everything, enter an odd number!");
+        int odd_num = scan.nextInt();
+        Missions.do_mission_seven(Player, odd_num);
+        // end seventh mission
         
         Printer.print_final_mission();
         scan.nextLine();
@@ -93,35 +92,9 @@ public class Main {
         UltimateCannon.do_final_mission(userAnswer, Player);
         String hero_rank = HeroRanking.set_Hero_Rank(Player.getRep());
         System.out.println("You are " + Player.getName() + " and you are a " + hero_rank + "!");
-        
-        
-        
-        
-        ArrayList<String> groceries = new ArrayList<String>();   
-        groceries.add("Eggs");
-        groceries.add("Milk");
-        groceries.add("Bread");
-        groceries.add("Chocolate Chip Cookies");
-        int pos = groceries.indexOf("Eggs");
-        int size = groceries.size();
-        String item = groceries.get(2);
-        for (int i = 0; i < groceries.size(); i++) {
-            System.out.println("Index: " + i + " - Item: " + groceries.get(i));
-        }
-        for (String str : groceries) {
-            System.out.println("Item is: " + str);
-        }
-        System.out.println("The position of Eggs in the ArrayList is "+ pos +", and the "
-                + "total size of the ArrayList is "+ size+ " and using the get method,"
-                        + " we can pick an item in the ArrayList like " + item+".");
-        
         System.out.println("This concludes my minigame and coding project, however, I would like "
-                + "to thank you for coming along this learning journey with me. With "
+                + "to thank you for coming along this learning journey with me.\nWith "
                 + "hardwork, my programming skills can only improve! Thank you and goodbye.");
-
-
         scan.close();
-
     }
-
 }

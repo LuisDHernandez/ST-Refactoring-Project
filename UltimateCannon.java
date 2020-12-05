@@ -1,6 +1,5 @@
 
 public class UltimateCannon {
-
     /**
      * @LuisD.Hernandez
      * @param userAnswer - accepts the parameter to be used in if statement and

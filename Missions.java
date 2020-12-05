@@ -50,6 +50,7 @@ public class Missions {
         }
 		
 	}
+	
 	public static void do_mission_three(Character player, int train) {
 		int count_months = train;
 		while(count_months >= 0) {
@@ -62,6 +63,7 @@ public class Missions {
 		System.out.println("Congrats! After training for " + train + " months, you abilities have increased:\nPower: " + player.getPower() + 
 				"\nSpeed: " + player.getSpeed() + "\nSmarts: " + player.getSmarts() + "\nEndurance: " + player.getEndurance());
 	}
+	
 	public static void do_mission_four(Character player, int plug, int chug) {
 		 int first_n = plug;
 		 if(first_n < 10) {
@@ -109,5 +111,23 @@ public class Missions {
 		pet.speak();
 		System.out.println("You give the animal a nametag with your name, " + pet.getOwner().getName() + ", and "
 				+ "leave a phone number to reach you at in case they get lost.");
+	}
+	
+	public static void do_mission_seven(Character player, int num) {
+		
+		player.setInventory("deodorant");
+		player.setInventory("flashlight");
+		player.setInventory("tape");
+		
+		if(num % 2 == 0) {
+		System.out.println("After checking the bag it seems you only have the following items: " + player.getInventory().toString());
+		System.out.println("You ponder where your lucky 8-ball might have went.");
+		player.setRep(player.getRep() - 1);
+		}
+		else {
+			player.setInventory("Lucky 8-ball");
+			System.out.println("You check to see all the items in your inventory: " + player.getInventory().toString());
+			player.setRep(player.getRep() + 1);
+		}	
 	}
 }

@@ -24,7 +24,5 @@ public class HeroRanking {
         }
         final String THE_HERO_RANK = HeroRank;
         return THE_HERO_RANK;
-
     }
-
 }
